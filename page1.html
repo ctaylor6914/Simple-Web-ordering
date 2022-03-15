@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head runat="server">
+    <title>
+        SET Pizza Shop
+    </title>
+	<SCRIPT type="text/javascript">
+	function validateName()
+	{
+		var name = document.getElementById("UserName").value;
+		var shouldSubmit = false;
+		var errMsg;
+		
+		var length = (name.trim()).length;
+		if(length == 0)
+		{
+			document.getElementById("lengthErr").innerHTML = "Name Cannot Be Blank";
+			return false;
+		}
+		else
+		{
+			document.getElementById("lengthErr").innerHTML = "";
+		}
+		
+		
+		var firstNlast = /[a-zA-Z][ ][a-zA-Z]/;
+		if(name.match(firstNlast))
+		{
+			shouldSubmit=true;
+		}
+		else
+		{
+			document.getElementById("regexErr").innerHTML = "Formatting Issue. Please Ensure Alphabetical characters only in the format of [First][SPACE][Last]";
+			return false;
+		}
+		
+		return shouldSubmit;
+	}
+	
+	</script>
+    <link rel="stylesheet" type="text/css" href="./StyleSheet1.css" />
+</head>
+<body>
+
+    <h1  style="text-decoration: underline; position: relative; text-align:center">
+        <b>SET Pizza Shop</b>
+    </h1>
+    <form id="form1" action="page2.asp" onsubmit="return validateName();" method="post">
+        <div>
+            Please Enter your First and Last Name to use the SET Pizza Shop: 
+            <input name="UserName" ID="UserName" type="text" placeholder="ie Joe Smith" autofocus ></input>
+        </div>
+		<div id="lengthErr" style="color:red;" ></div>
+		<div id="regexErr" style="color:red;"></div>
+		
+        <input ID="Enter" type="submit" Value="Enter" />
+    </form>
+</body>
+</html>
